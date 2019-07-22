@@ -35,7 +35,7 @@
 #include <evl/mutex.h>
 #include <evl/clock.h>
 #include <evl/sem.h>
-#include <evl/utils.h>
+#include <evl/proxy.h>
 #include "helpers.h"
 #include <linux/gpio.h>
 #include <uapi/evl/devices/gpio.h>
@@ -45,7 +45,7 @@
 #if 0
 #define gpio_printf(file, __fmt, __args...) fprintf(file, __fmt, ##__args)
 #else
-#define gpio_printf(file, __fmt, __args...) evl_printf(fileno(file), __fmt, ##__args)
+#define gpio_printf(file, __fmt, __args...) evl_printf(__fmt, ##__args)
 #endif
 
 static int gpio_tx_value(const int fd, struct gpiohandle_data *data, int oob)
